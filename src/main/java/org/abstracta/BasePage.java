@@ -11,10 +11,13 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.time.Duration;
 
 public abstract class BasePage {
-    protected WebDriver driver;
+    protected static WebDriver driver = null;
 
     public BasePage(WebDriver driver)
     {
-        this.driver  = driver;
+        synchronized (this) {
+            if (BasePage.driver == null)
+                BasePage.driver = driver;
+        }
     }
 }
