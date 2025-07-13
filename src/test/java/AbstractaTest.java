@@ -3,6 +3,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.abstracta
 
+@Test
 public void AbstractaTest() {
     protected JavascriptExecutor js;
     protected String url;
