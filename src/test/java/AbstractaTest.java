@@ -1,10 +1,9 @@
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.abstracta
+import org.abstracta;
 
-@Test
-public void AbstractaTest() {
+public class AbstractaTest() {
     protected JavascriptExecutor js;
     protected String url;
     protected WebDriver driver;
@@ -13,7 +12,7 @@ public void AbstractaTest() {
     PrincipalPage pPage = New PrincipalPage(driver);
     driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     PageSearch pSearch = New PageSearch(driver);
-    ShoppingCart sCart = New ShoppingCart;
+    ShoppingCart sCart = New ShoppingCart(driver);
 
     result = pPage.searchProduct("Iphone");
     if ( result == 1)
