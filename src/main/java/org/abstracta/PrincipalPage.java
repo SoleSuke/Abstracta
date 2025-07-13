@@ -17,19 +17,27 @@ public class PrincipalPage extends BasePage {
     public PrincipalPage(WebDriver driver)
     {
         super(driver);
-        driver = (WebDriver) new FirefoxDriver();
-        url = "http://opencart.abstracta.us";
-        driver.navigate().to(url);
-        js = (JavascriptExecutor) driver;
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.className("header_container")));
+        //driver = (WebDriver) new FirefoxDriver();
+        //url = "http://opencart.abstracta.us";
+        //driver.navigate().to(url);
+        //js = (JavascriptExecutor) driver;
+        //new WebDriverWait(driver, Duration.ofSeconds(15)).until(d -> d.findElement(By.className("container")));
 
     }
-    // XPath of bar search
+
+    public void goToUrl(String url) {
+        driver = (WebDriver) new FirefoxDriver();
+        driver.navigate().to(url);
+        js = (JavascriptExecutor) driver;
+    }
+
+    //XPath of bar search
 
     public int searchProduct(String product)
     {
         try {
             myxpath = "/html/body/header/div/div/div[2]/div/input";
+            System.out.println("My url is :" + driver.getCurrentUrl());
             driver.findElement(By.xpath(myxpath)).sendKeys(product);
             System.out.println("Search for product");
         } catch (Exception e) {

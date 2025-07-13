@@ -13,12 +13,14 @@ public class PageSearch extends BasePage {
     public PageSearch(WebDriver driver)
     {
         super(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.className("header_container")));
+        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.className("container")));
+        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.partialLinkText("Your Store")));
     }
     public int firstElSearch()
     {
         // XPath of First Element find
         try {
+            System.out.println("My url ahora es :" + driver.getCurrentUrl());
             myxpath = "/html/body/div[2]/div/div/div[3]/div/div/div[1]/a/img";
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             driver.findElement(By.xpath(myxpath)).click();

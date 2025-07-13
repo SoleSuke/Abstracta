@@ -10,7 +10,7 @@ public class ShoppingCart extends BasePage {
     public ShoppingCart(WebDriver driver)
     {
         super(driver);
-        new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.className("header_container")));
+        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.partialLinkText("opencart.abstracta.us")));
     }
 
 
