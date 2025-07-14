@@ -1,7 +1,6 @@
 package org.abstracta;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -10,9 +9,7 @@ public class ShoppingCart extends BasePage {
     public ShoppingCart(WebDriver driver)
     {
         super(driver);
-        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.partialLinkText("opencart.abstracta.us")));
     }
-
 
     public int ReviewCart() {
         try {
@@ -21,16 +18,17 @@ public class ShoppingCart extends BasePage {
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
             System.out.println("Click in View Cart");
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
-            var shopCart = driver.findElement(By.xpath(myxpath)).getSize();
-            System.out.println("En mi carrito de compras tengo" + shopCart);
+            myxpath = "/html/body/div[2]/div[2]/div/form/div/table/tbody/tr/td[2]/a";
+            driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+            var shopCart = driver.findElement(By.xpath(myxpath)).getText();
+            System.out.println("En mi carrito de compras tengo " + shopCart);
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
         return 1;
     }
 
-    public int RemoveItemFromCart()
-    {
+    public int RemoveItemFromCart() throws InterruptedException {
         System.out.println("Voy a remover el Iphone from the cart");
         try {
             myxpath = "/html/body/div[2]/div[2]/div/form/div/table/tbody/tr/td[4]/div/span/button[2]/i";
@@ -39,10 +37,15 @@ public class ShoppingCart extends BasePage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        //myxpath = "//*[@id=\"cart-total\"]";
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(3));
-        var shopCart = driver.findElement(By.xpath(myxpath)).getSize();
-        System.out.println("In my cart now there are " + shopCart );
+        myxpath = "/html/body/div[2]/div/div/p";
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        try {
+            var shopCart = driver.findElement(By.xpath(myxpath)).getText();
+            System.out.println("In my cart now there are " + shopCart );
+        } catch (Exception e) {
+            System.out.println("In my cart now there are nothing");
+            throw new RuntimeException(e);
+        }
         return 1;
     }
 

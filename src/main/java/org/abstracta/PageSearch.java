@@ -4,7 +4,6 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
@@ -13,8 +12,6 @@ public class PageSearch extends BasePage {
     public PageSearch(WebDriver driver)
     {
         super(driver);
-        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.className("container")));
-        //new WebDriverWait(driver, Duration.ofSeconds(5)).until(d -> d.findElement(By.partialLinkText("Your Store")));
     }
     public int firstElSearch()
     {

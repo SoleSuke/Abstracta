@@ -3,11 +3,7 @@ package org.abstracta;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.firefox.FirefoxDriver;
-import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 //Principal page
 public class PrincipalPage extends BasePage {
@@ -17,12 +13,6 @@ public class PrincipalPage extends BasePage {
     public PrincipalPage(WebDriver driver)
     {
         super(driver);
-        //driver = (WebDriver) new FirefoxDriver();
-        //url = "http://opencart.abstracta.us";
-        //driver.navigate().to(url);
-        //js = (JavascriptExecutor) driver;
-        //new WebDriverWait(driver, Duration.ofSeconds(15)).until(d -> d.findElement(By.className("container")));
-
     }
 
     public void goToUrl(String url) {
