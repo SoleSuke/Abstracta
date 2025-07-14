@@ -1,5 +1,6 @@
 package org.abstracta;
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
 import org.openqa.selenium.WebDriver;
 
 import java.time.Duration;
@@ -37,14 +38,14 @@ public class ShoppingCart extends BasePage {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
-        myxpath = "/html/body/div[2]/div/div/p";
-        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(20));
+        myxpath = "//table[@class='table table-striped']"; //shopping cart table
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         try {
-            var shopCart = driver.findElement(By.xpath(myxpath)).getText();
+            var shopCart = driver.findElement(By.xpath(myxpath));
             System.out.println("In my cart now there are " + shopCart );
-        } catch (Exception e) {
+            throw new RuntimeException("There are items in the shopping cart");
+        } catch (NoSuchElementException e) {
             System.out.println("In my cart now there are nothing");
-            throw new RuntimeException(e);
         }
         return 1;
     }
