@@ -10,14 +10,14 @@ pipeline {
 		stage('Build') {
 			steps {
 				withMaven {
-					sh 'mvn clean package'
+					bash 'mvn clean compile'
 				}
 			}
 		}
 		stage('Test') {
 			steps {
 				withMaven {
-					sh 'mvn test'
+					bash 'mvn test'
 				}
 			}
 		}
